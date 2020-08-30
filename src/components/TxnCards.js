@@ -21,6 +21,7 @@ function TxnCards(props) {
                   });
             }
         }
+        
         initializeState();
     });
 

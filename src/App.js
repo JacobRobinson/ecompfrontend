@@ -6,8 +6,8 @@ import {AccountCards, UserCard} from './components/components'
 
 function App() {
   const [user, setUser] = useState({
-    name: 'Stewie Griffin',
-    customerID: '002'
+    name: 'Peter Griffin',
+    customerID: '123'
   });
 
   return (
@@ -17,7 +17,7 @@ function App() {
         <div>
           <Grid container justify="space-evenly">
             <Grid container item>
-              <UserCard name={user.name} customerID={user.customerID}></UserCard>
+              <UserCard user={user}></UserCard>
             </Grid>
             <Grid container item>
               <AccountCards user={user}></AccountCards>

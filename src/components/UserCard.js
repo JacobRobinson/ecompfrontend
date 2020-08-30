@@ -8,8 +8,8 @@ function UserCard(props) {
     return (
         <Card>
             <Paper>
-                <h3>{props.name}</h3>
-                <h4>{props.customerID}</h4>
+                <h3>{props.user.name}</h3>
+                <h4>{props.user.customerID}</h4>
                 <Button >SEARCH</Button> 
                 <TextField label="New User"></TextField>
             </Paper>
