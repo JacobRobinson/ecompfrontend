@@ -10,7 +10,7 @@ function UserCard(props) {
             <Paper>
                 <h3>{props.name}</h3>
                 <h4>{props.customerID}</h4>
-                <Button onClick>SEARCH</Button> 
+                <Button >SEARCH</Button> 
                 <TextField label="New User"></TextField>
             </Paper>
         </Card>

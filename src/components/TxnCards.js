@@ -1,15 +1,35 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import Paper from '@material-ui/core/Paper'
 import Card from '@material-ui/core/Card'
 
 function TxnCards(props) {
-    return (props.txns.list.map(txn => {
+    const [txns, setTxns] = useState({
+        loaded: false,
+        list: []
+    });
+
+    useEffect(()=>{
+        async function initializeState(){
+            if (!txns.loaded) {
+        
+                const txnsRequest = await fetch('transactions?accountFrom=' + props.account.accountNumber);
+                const accountTransactions = JSON.parse(await txnsRequest.text()).data
+
+                setTxns({
+                    loaded: true,
+                    list: accountTransactions
+                  });
+            }
+        }
+        initializeState();
+    });
+
+    return (txns.list.map(txn => {
         return <Card>
                     <Paper>
                         <h3>Account: {txn.accountFrom}</h3>
-                        <h3>Recipient: {txn.accountTo}</h3>
-                        <h2>Amount in CAD: {txn.amount}</h2>
-                        <h4>Account balance: {txn.balance}</h4>
+                        <p>Recipient: {txn.accountTo}</p>
+                        <p>Amount in CAD: {txn.amount}</p>
                     </Paper>
                 </Card>
         })
