@@ -1,9 +1,8 @@
 import React, {useState, useEffect} from 'react';
 import logo from './logo.svg';
 import './App.css';
-import {AccountCards, UserCard} from './components/components'
-import Grid from '@material-ui/core/Grid'
-import AppBar from '@material-ui/core/AppBar'
+import {AccountCards} from './components/components'
+import {AppBar, Grid, Toolbar} from '@material-ui/core'
 
 function App() {
   const [user, setUser] = useState({
@@ -47,7 +46,7 @@ function App() {
               });
           } catch (e) {return}
       }
-      console.log(accounts)
+
       if (!accounts.loaded) {
         initializeAccounts();
       }
@@ -56,13 +55,12 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
+        <AppBar>
+          <Toolbar>Welcome, {user.name}!</Toolbar>
+        </AppBar>
         <img src={logo} className="App-logo" alt="logo" />
         <div>
-          <AppBar></AppBar>
           <Grid container justify="space-evenly">
-            <Grid container item>
-              <UserCard user={user}></UserCard>
-            </Grid>
             <Grid container item>
               <AccountCards accounts={accounts}></AccountCards>
             </Grid>
